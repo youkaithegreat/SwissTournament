@@ -42,6 +42,8 @@ def testCount():
             "After deletion, countPlayers should return zero.")
     print "4. countPlayers() returns zero after registered players are deleted.\n5. Player records successfully deleted."
 
+
+
 def testStandingsBeforeMatches():
     """
     Test to ensure players are properly represented in standings prior
@@ -148,8 +150,10 @@ def testPairings():
 
 
 if __name__ == '__main__':
+    countPlayers()
     testCount()
     testStandingsBeforeMatches()
     testReportMatches()
+    playerStandings()
     testPairings()
     print "Success!  All tests pass!"
