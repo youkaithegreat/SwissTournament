@@ -77,12 +77,12 @@ def playerStandings():
     """
     player_standings = []
     
+    ## Gets the info from the VIEW in the SQL. 
     rankings_table = executeQuery('SELECT * FROM rankings ORDER BY wins desc', True)
-    for rows in rankings_table:
-        total_matches = int(rows[2]) + int(rows[3])
-        player_tuple = (rows[0], rows[1], int(rows[2]), total_matches)
-        player_standings.append(player_tuple)
-    return player_standings
+
+    ## iterates through the table to find the info 
+
+    return rankings_table
 
 def reportMatch(winner, loser):
     """Records the outcome of a single match between two players.

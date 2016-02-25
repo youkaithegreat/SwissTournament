@@ -27,12 +27,14 @@ CREATE TABLE matches  ( match_id serial primary key,
                         foreign key (winner_id) references players(player_id),
                         foreign key (loser_id) references players(player_id) );
 
+-- rankings is a view created with the info from players and matches 
 CREATE VIEW rankings AS 
 SELECT player_id, player_name, 
 	(SELECT count(*) FROM matches WHERE player_id = winner_id) AS wins,
-	(SELECT count(*) FROM matches WHERE player_id = loser_id) AS losses
+	(SELECT count(*) FROM matches WHERE player_id IN (winner_id, loser_id)) AS matches
 FROM players
 GROUP BY player_id;
+
 /*
 
 INSERT INTO players (player_name) VALUES ('kevin');
